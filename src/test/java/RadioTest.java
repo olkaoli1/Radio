@@ -27,7 +27,6 @@ public class RadioTest {
         assertEquals(9, radio.getCurrentStation());
     }
 
-    // Тест для метода setStation(int) с допустимыми значениями
     @Test
     public void testSetStation() {
         Radio radio = new Radio();
@@ -35,18 +34,16 @@ public class RadioTest {
         assertEquals(5, radio.getCurrentStation());
     }
 
-    // Тест для метода setStation(int) с недопустимыми значениями
     @Test
     public void testSetStationOutOfRange() {
         Radio radio = new Radio();
-        radio.setStation(-1);  // Попытка установить станцию ниже диапазона
-        assertEquals(0, radio.getCurrentStation());  // Станция не должна измениться
+        radio.setStation(-1);
+        assertEquals(0, radio.getCurrentStation());
 
-        radio.setStation(10);  // Попытка установить станцию выше диапазона
-        assertEquals(0, radio.getCurrentStation());  // Станция не должна измениться
+        radio.setStation(10);
+        assertEquals(0, radio.getCurrentStation());
     }
 
-    // Тест для метода increaseVolume()
     @Test
     public void testIncreaseVolume() {
         Radio radio = new Radio();
@@ -55,10 +52,9 @@ public class RadioTest {
         assertEquals(100, radio.getCurrentVolume());
 
         radio.increaseVolume();
-        assertEquals(100, radio.getCurrentVolume());  // Громкость не должна превышать 100
+        assertEquals(100, radio.getCurrentVolume());
     }
 
-    // Тест для метода decreaseVolume()
     @Test
     public void testDecreaseVolume() {
         Radio radio = new Radio();
@@ -67,10 +63,9 @@ public class RadioTest {
         assertEquals(0, radio.getCurrentVolume());
 
         radio.decreaseVolume();
-        assertEquals(0, radio.getCurrentVolume());  // Громкость не должна опускаться ниже 0
+        assertEquals(0, radio.getCurrentVolume());
     }
 
-    // Тест для метода setVolume(int) с допустимыми значениями
     @Test
     public void testSetVolume() {
         Radio radio = new Radio();
@@ -78,14 +73,13 @@ public class RadioTest {
         assertEquals(50, radio.getCurrentVolume());
     }
 
-    // Тест для метода setVolume(int) с недопустимыми значениями
     @Test
     public void testSetVolumeOutOfRange() {
         Radio radio = new Radio();
-        radio.setVolume(-1);  // Попытка установить громкость ниже диапазона
-        assertEquals(0, radio.getCurrentVolume());  // Громкость не должна измениться
+        radio.setVolume(-1);
+        assertEquals(0, radio.getCurrentVolume());
 
-        radio.setVolume(101);  // Попытка установить громкость выше диапазона
-        assertEquals(0, radio.getCurrentVolume());  // Громкость не должна измениться
+        radio.setVolume(101);
+        assertEquals(0, radio.getCurrentVolume());
     }
 }
