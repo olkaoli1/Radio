@@ -9,10 +9,10 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setStation(8);
         radio.nextStation();
-        assertEquals(9, radio.getCurrentStation()); // Проверяем, что станция переключилась на 9
+        assertEquals(9, radio.getCurrentStation());
 
         radio.nextStation();
-        assertEquals(0, radio.getCurrentStation()); // Проверяем, что станция вернулась на 0 после 9
+        assertEquals(0, radio.getCurrentStation());
     }
 
     // Тест для метода prevStation()
@@ -21,21 +21,29 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setStation(1);
         radio.prevStation();
-        assertEquals(0, radio.getCurrentStation()); // Проверяем, что станция переключилась на 0
+        assertEquals(0, radio.getCurrentStation());
 
         radio.prevStation();
-        assertEquals(9, radio.getCurrentStation()); // Проверяем, что станция вернулась на 9 после 0
+        assertEquals(9, radio.getCurrentStation());
     }
 
-    // Тест для метода setStation()
+    // Тест для метода setStation(int) с допустимыми значениями
     @Test
     public void testSetStation() {
         Radio radio = new Radio();
         radio.setStation(5);
-        assertEquals(5, radio.getCurrentStation()); // Проверяем установку станции на допустимое значение
+        assertEquals(5, radio.getCurrentStation());
+    }
 
-        radio.setStation(10); // Недопустимое значение
-        assertEquals(5, radio.getCurrentStation()); // Убедитесь, что станция не изменилась
+    // Тест для метода setStation(int) с недопустимыми значениями
+    @Test
+    public void testSetStationOutOfRange() {
+        Radio radio = new Radio();
+        radio.setStation(-1);  // Попытка установить станцию ниже диапазона
+        assertEquals(0, radio.getCurrentStation());  // Станция не должна измениться
+
+        radio.setStation(10);  // Попытка установить станцию выше диапазона
+        assertEquals(0, radio.getCurrentStation());  // Станция не должна измениться
     }
 
     // Тест для метода increaseVolume()
@@ -44,10 +52,10 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setVolume(99);
         radio.increaseVolume();
-        assertEquals(100, radio.getCurrentVolume()); // Проверяем, что громкость увеличилась до 100
+        assertEquals(100, radio.getCurrentVolume());
 
         radio.increaseVolume();
-        assertEquals(100, radio.getCurrentVolume()); // Проверяем, что громкость не превышает 100
+        assertEquals(100, radio.getCurrentVolume());  // Громкость не должна превышать 100
     }
 
     // Тест для метода decreaseVolume()
@@ -56,20 +64,28 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setVolume(1);
         radio.decreaseVolume();
-        assertEquals(0, radio.getCurrentVolume()); // Проверяем, что громкость уменьшилась до 0
+        assertEquals(0, radio.getCurrentVolume());
 
         radio.decreaseVolume();
-        assertEquals(0, radio.getCurrentVolume()); // Проверяем, что громкость не опускается ниже 0
+        assertEquals(0, radio.getCurrentVolume());  // Громкость не должна опускаться ниже 0
     }
 
-    // Тест для метода setVolume()
+    // Тест для метода setVolume(int) с допустимыми значениями
     @Test
     public void testSetVolume() {
         Radio radio = new Radio();
         radio.setVolume(50);
-        assertEquals(50, radio.getCurrentVolume()); // Проверяем установку громкости на допустимое значение
+        assertEquals(50, radio.getCurrentVolume());
+    }
 
-        radio.setVolume(150); // Недопустимое значение
-        assertEquals(50, radio.getCurrentVolume()); // Убедитесь, что громкость не изменилась
+    // Тест для метода setVolume(int) с недопустимыми значениями
+    @Test
+    public void testSetVolumeOutOfRange() {
+        Radio radio = new Radio();
+        radio.setVolume(-1);  // Попытка установить громкость ниже диапазона
+        assertEquals(0, radio.getCurrentVolume());  // Громкость не должна измениться
+
+        radio.setVolume(101);  // Попытка установить громкость выше диапазона
+        assertEquals(0, radio.getCurrentVolume());  // Громкость не должна измениться
     }
 }

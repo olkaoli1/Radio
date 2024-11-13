@@ -1,5 +1,4 @@
 public class Radio {
-    // Поля класса
     private int currentStation = 0; // Номер текущей радиостанции (от 0 до 9)
     private int currentVolume = 0;  // Уровень громкости звука (от 0 до 100)
 
