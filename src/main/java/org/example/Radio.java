@@ -1,59 +1,67 @@
 public class Radio {
-    private int currentStation = 0; // Номер текущей радиостанции (от 0 до 9)
-    private int currentVolume = 0;  // Уровень громкости звука (от 0 до 100)
+    private int currentStation = 0;
+    private int currentVolume = 0;
+    private int numberOfStations; // Новое поле
 
-    // Метод для переключения на следующую станцию
+    // Конструктор по умолчанию
+    public Radio() {
+        this.numberOfStations = 10; // По умолчанию 10 станций
+    }
+
+    // Конструктор с параметром
+    public Radio(int numberOfStations) {
+        if (numberOfStations > 0) {
+            this.numberOfStations = numberOfStations;
+        } else {
+            this.numberOfStations = 10; // Если параметр некорректный
+        }
+    }
+
     public void nextStation() {
-        if (currentStation == 9) {
+        if (currentStation == numberOfStations - 1) {
             currentStation = 0;
         } else {
             currentStation++;
         }
     }
 
-    // Метод для переключения на предыдущую станцию
     public void prevStation() {
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = numberOfStations - 1;
         } else {
             currentStation--;
         }
     }
 
-    // Метод для установки конкретного номера станции
     public void setStation(int station) {
-        if (station >= 0 && station <= 9) {
+        if (station >= 0 && station < numberOfStations) {
             currentStation = station;
         }
     }
 
-    // Метод для получения текущего номера станции
     public int getCurrentStation() {
         return currentStation;
     }
 
-    // Метод для увеличения громкости
+    // Методы для громкости остаются без изменений
     public void increaseVolume() {
         if (currentVolume < 100) {
             currentVolume++;
         }
     }
 
-    // Метод для уменьшения громкости
     public void decreaseVolume() {
         if (currentVolume > 0) {
             currentVolume--;
         }
     }
 
-    // Метод для установки конкретного уровня громкости
     public void setVolume(int volume) {
         if (volume >= 0 && volume <= 100) {
             currentVolume = volume;
         }
     }
 
-    // Метод для получения текущего уровня громкости
     public int getCurrentVolume() {
         return currentVolume;
     }

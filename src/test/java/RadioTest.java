@@ -82,4 +82,13 @@ public class RadioTest {
         radio.setVolume(101);
         assertEquals(0, radio.getCurrentVolume());
     }
+
+    @Test
+    public void shouldSetCustomNumberOfStations() {
+        Radio radio = new Radio(15); // Количество станций = 15
+        radio.setStation(14);
+        assertEquals(14, radio.getCurrentStation());
+        radio.nextStation();
+        assertEquals(0, radio.getCurrentStation());
+    }
 }
